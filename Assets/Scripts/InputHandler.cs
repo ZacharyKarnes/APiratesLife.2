@@ -127,8 +127,6 @@ public class InputHandler : MonoBehaviour
 
         controls.Locomotion.RAttack.performed += controls =>  rAttackOn = true;
      
- 
-
         controls.Locomotion.RAttack.canceled += controls => rAttackOn = false;
 
         controls.Locomotion.LAttack.performed += controls => lAttackOn = true;

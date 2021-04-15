@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
     private void HandleAttack()
 
     {
-
+        
         if (input.rAttackOn)
 
         {
@@ -226,6 +226,7 @@ public class PlayerController : MonoBehaviour
 
         if (input.lAttackOn)
         {
+           
             animatorHandler.UpdateLAttack(true);
         }
         else if (!input.lAttackOn) {

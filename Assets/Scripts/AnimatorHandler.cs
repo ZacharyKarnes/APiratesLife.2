@@ -69,12 +69,13 @@ public class AnimatorHandler : MonoBehaviour
     }
     public void UpdateRAttack(bool RAttacking) {
 
-        Debug.Log("SUCCESS");
+       
 
         anim.SetBool("RightA", RAttacking);
     }
     public void UpdateLAttack(bool LAttacking)
     {
+        
         anim.SetBool("LeftA", LAttacking);
     }
 }
