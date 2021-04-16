@@ -65,6 +65,7 @@ public class AnimatorHandler : MonoBehaviour
     {
 
         anim.SetBool("Jump", jumping);
+      
 
     }
     public void UpdateRAttack(bool RAttacking) {
@@ -72,10 +73,24 @@ public class AnimatorHandler : MonoBehaviour
        
 
         anim.SetBool("RightA", RAttacking);
+        
     }
     public void UpdateLAttack(bool LAttacking)
     {
         
         anim.SetBool("LeftA", LAttacking);
+    }
+
+    public void UpdateDodge(bool dodging) {
+        anim.SetBool("Dodge", dodging);
+
+    }
+
+    public void UpdateAttack(bool attacking) {
+        anim.SetBool("Attacking", attacking);
+    }
+
+    public void UpdateDeath(bool death) {
+        anim.SetBool("Dead", death);
     }
 }

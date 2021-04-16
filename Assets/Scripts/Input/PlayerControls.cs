@@ -65,6 +65,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dodge"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4019caa-4e84-458a-a1dc-3c4028df46ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -177,6 +185,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""LAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""faeaaf11-d22f-4aa3-a6e4-b43eb9d59265"",
+                    ""path"": ""<Mouse>/forwardButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -191,6 +210,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Locomotion_Sprint = m_Locomotion.FindAction("Sprint", throwIfNotFound: true);
         m_Locomotion_RAttack = m_Locomotion.FindAction("RAttack", throwIfNotFound: true);
         m_Locomotion_LAttack = m_Locomotion.FindAction("LAttack", throwIfNotFound: true);
+        m_Locomotion_Dodge = m_Locomotion.FindAction("Dodge", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -246,6 +266,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Locomotion_Sprint;
     private readonly InputAction m_Locomotion_RAttack;
     private readonly InputAction m_Locomotion_LAttack;
+    private readonly InputAction m_Locomotion_Dodge;
     public struct LocomotionActions
     {
         private @PlayerControls m_Wrapper;
@@ -256,6 +277,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Locomotion_Sprint;
         public InputAction @RAttack => m_Wrapper.m_Locomotion_RAttack;
         public InputAction @LAttack => m_Wrapper.m_Locomotion_LAttack;
+        public InputAction @Dodge => m_Wrapper.m_Locomotion_Dodge;
         public InputActionMap Get() { return m_Wrapper.m_Locomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,6 +305,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @LAttack.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnLAttack;
                 @LAttack.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnLAttack;
                 @LAttack.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnLAttack;
+                @Dodge.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnDodge;
+                @Dodge.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnDodge;
+                @Dodge.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnDodge;
             }
             m_Wrapper.m_LocomotionActionsCallbackInterface = instance;
             if (instance != null)
@@ -305,6 +330,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @LAttack.started += instance.OnLAttack;
                 @LAttack.performed += instance.OnLAttack;
                 @LAttack.canceled += instance.OnLAttack;
+                @Dodge.started += instance.OnDodge;
+                @Dodge.performed += instance.OnDodge;
+                @Dodge.canceled += instance.OnDodge;
             }
         }
     }
@@ -317,5 +345,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnRAttack(InputAction.CallbackContext context);
         void OnLAttack(InputAction.CallbackContext context);
+        void OnDodge(InputAction.CallbackContext context);
     }
 }

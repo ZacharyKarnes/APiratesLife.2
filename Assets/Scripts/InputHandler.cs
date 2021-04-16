@@ -34,6 +34,8 @@ public class InputHandler : MonoBehaviour
 
     public bool lAttackOn = false;
 
+    public bool dodgeOn = false;
+
 
     public float moveAmount { get; private set; }
 
@@ -132,6 +134,11 @@ public class InputHandler : MonoBehaviour
         controls.Locomotion.LAttack.performed += controls => lAttackOn = true;
 
         controls.Locomotion.LAttack.canceled += controls => lAttackOn = false;
+
+        //Dodge
+        controls.Locomotion.Dodge.performed += controls => dodgeOn = true;
+        controls.Locomotion.Dodge.canceled += controls => dodgeOn = false;
+
 
 
 

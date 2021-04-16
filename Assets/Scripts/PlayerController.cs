@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
 
     private AnimatorHandler animatorHandler;
 
+    
+    public BattleStats battle;
+
 
 
     public Transform camParent;
@@ -55,6 +58,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 velocity;
 
+    
+
+    
 
 
     void Start()
@@ -66,9 +72,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         animatorHandler = GetComponent<AnimatorHandler>();
-
-
-
+    
         animatorHandler.Initialize();
 
     }
@@ -88,6 +92,8 @@ public class PlayerController : MonoBehaviour
         HandleJump();
 
         HandleAttack();
+        HandleDodge();
+        HandleDeath();
 
 
 
@@ -216,9 +222,10 @@ public class PlayerController : MonoBehaviour
         if (input.rAttackOn)
 
         {
-            
+            animatorHandler.UpdateAttack(true);
             animatorHandler.UpdateRAttack(true);
-
+            
+          
         }
         else if (!input.rAttackOn) {
             animatorHandler.UpdateRAttack(false);
@@ -228,6 +235,8 @@ public class PlayerController : MonoBehaviour
         {
            
             animatorHandler.UpdateLAttack(true);
+            animatorHandler.UpdateAttack(true);
+
         }
         else if (!input.lAttackOn) {
             animatorHandler.UpdateLAttack(false);
@@ -238,6 +247,22 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    
+    private void HandleDodge() {
+        if (input.dodgeOn)
+        {
+            animatorHandler.UpdateDodge(true);
+        }
+        else if (!input.dodgeOn) {
+            animatorHandler.UpdateDodge(false);
+        }
+    }
+
+    private void HandleDeath() {
+        if (!battle.isPlayerAlive) {
+            animatorHandler.UpdateDeath(true);
+        } else if (battle.isPlayerAlive) {
+            animatorHandler.UpdateDeath(false);
+        }
+    }
 }
 
