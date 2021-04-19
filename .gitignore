@@ -62,7 +62,11 @@ crashlytics-build.properties
 
 Assets/Graphics/
 Assets/Animation/
+<<<<<<< HEAD
 Assets/Audio/ 
+=======
+Assets/Audio/
+>>>>>>> Wes
 
 
 
