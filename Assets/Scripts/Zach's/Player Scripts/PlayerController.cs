@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
 
     private AnimatorHandler animatorHandler;
 
-    
-  
+
+
 
 
 
@@ -58,9 +58,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 velocity;
 
-    
 
-    
+
+
 
 
     void Start()
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         animatorHandler = GetComponent<AnimatorHandler>();
-    
+
         animatorHandler.Initialize();
 
     }
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
         HandleAttack();
         HandleDodge();
-        
+
 
 
 
@@ -230,31 +230,23 @@ public class PlayerController : MonoBehaviour
         {
             animatorHandler.UpdateLAttack(false);
         }
- 
+
     }
 
     private void HandleRightAttack()
     {
-        if (!animatorHandler.swordDrawn)
-        {
-          
-        } else
-        {
+      
             animatorHandler.UpdateAttack(true);
             animatorHandler.UpdateRAttack(true);
-        }
+        
     }
 
-    private void HandleLeftAttack()
-    {
-        if (!animatorHandler.daggerDrawn)
-        {
-           
-        } else
-        {
-            animatorHandler.UpdateLAttack(true);
-            animatorHandler.UpdateAttack(true);
-        }
+    private void HandleLeftAttack() { 
+
+
+    animatorHandler.UpdateLAttack(true);
+    animatorHandler.UpdateAttack(true);
+
     }
 
     private void HandleDodge() {
