@@ -31,9 +31,12 @@ public class AI : MonoBehaviour
     public float sightRange, attackRange;
 
 
+    Animator anim;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
     }
 
 
@@ -60,6 +63,10 @@ public class AI : MonoBehaviour
     #region States
     private void Patrol()
     {
+        //handle animation and speed
+        agent.speed = 1;
+        anim.SetFloat("vertical", .5f);
+
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -83,6 +90,10 @@ public class AI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        //handle animation and speed
+        agent.speed = 6;
+        anim.SetFloat("vertical", 1f);
+
         agent.SetDestination(player.position);
 
 
@@ -98,6 +109,11 @@ public class AI : MonoBehaviour
 
     private void AttackPlayer()
     {
+
+        //handle animation and speed
+        agent.speed = 1f;
+
+
         //make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
