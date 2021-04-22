@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class WeaponSpawn : MonoBehaviour
 {
-    public GameObject rsheathedWeapon;
-    public GameObject rheldWeapon;
+    public GameObject rSheathedWeapon;
+    public GameObject rHeldWeapon;
+    public GameObject lSheathedWeapon;
+    public GameObject lHeldWeapon;
+
 
     public void DrawSword()
     {
-        rsheathedWeapon.SetActive(false);
-        rheldWeapon.SetActive(true);
+        rSheathedWeapon.SetActive(false);
+        rHeldWeapon.SetActive(true);
+    }
+
+    public void DrawDagger() {
+        lSheathedWeapon.SetActive(false);
+        lHeldWeapon.SetActive(true);
     }
 }
