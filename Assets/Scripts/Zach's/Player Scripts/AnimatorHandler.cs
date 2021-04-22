@@ -10,7 +10,9 @@ public class AnimatorHandler : MonoBehaviour
 
 {
 
-    private Animator anim;
+    public Animator anim;
+    
+        
 
 
 
@@ -89,6 +91,9 @@ public class AnimatorHandler : MonoBehaviour
 
     public void UpdateDodge(bool dodging) {
         anim.SetBool("Dodge", dodging);
+        
+        
+        
 
     }
 

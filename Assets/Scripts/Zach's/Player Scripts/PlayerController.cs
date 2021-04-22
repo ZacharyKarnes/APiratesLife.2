@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     private AnimatorHandler animatorHandler;
 
+   
+
 
 
 
@@ -75,6 +77,8 @@ public class PlayerController : MonoBehaviour
 
         animatorHandler.Initialize();
 
+        
+
     }
 
 
@@ -106,10 +110,17 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement(float delta)
 
     {
-
         Vector3 movement = (input.move.x * camParent.right) + (input.move.y * camParent.forward);
 
-        controller.Move(movement * speed * delta);
+        if (!animatorHandler.anim.GetBool("movement"))
+        {
+            controller.Move(movement * 0f * delta);
+        }
+        else if(animatorHandler.anim.GetBool("movement"))
+        {
+            controller.Move(movement * speed * delta);
+        }
+        
 
     }
 
@@ -253,9 +264,12 @@ public class PlayerController : MonoBehaviour
         if (input.dodgeOn)
         {
             animatorHandler.UpdateDodge(true);
+            
         }
         else if (!input.dodgeOn) {
             animatorHandler.UpdateDodge(false);
+           
+            
         }
     }
 
