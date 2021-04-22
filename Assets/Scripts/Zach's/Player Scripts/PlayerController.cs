@@ -259,12 +259,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private void HandleDeath() {
-    //    if (!battle.isPlayerAlive) {
-     //       animatorHandler.UpdateDeath(true);
-       // } else if (battle.isPlayerAlive) {
-         //   animatorHandler.UpdateDeath(false);
-       // }
-    //}
+    private void HandleDeath() {
+      
+   }
 }
 
