@@ -279,7 +279,6 @@ MonoBehaviour:
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
   jumpDown: 0
-  sprintOn: 0
   rAttackOn: 0
   lAttackOn: 0
   dodgeOn: 0
@@ -687,6 +686,24 @@ MonoBehaviour:
   rHeldWeapon: {fileID: 249914201}
   lSheathedWeapon: {fileID: 371689040}
   lHeldWeapon: {fileID: 1552700961}
+--- !u!114 &1420729635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420729632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140b289e256b04b42bd99cbc31f9697b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1420729633}
+  inputHandler: {fileID: 0}
+  playerController: {fileID: 0}
+  canRotate: 1
+  daggerDrawn: 0
+  swordDrawn: 0
 --- !u!1001 &1525230991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -900,7 +917,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1658042305}
   - component: {fileID: 1658042304}
-  - component: {fileID: 1658042306}
   - component: {fileID: 1658042303}
   m_Layer: 9
   m_Name: PlayerParent
@@ -939,6 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ae4b1bc1e36f049880b1b45b7e7ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
   camParent: {fileID: 1763896456}
   cam: {fileID: 963194228}
   speed: 8
@@ -966,22 +983,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1658042306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658042302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 140b289e256b04b42bd99cbc31f9697b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1420729633}
-  canRotate: 1
-  daggerDrawn: 0
-  swordDrawn: 0
 --- !u!1001 &1735945327
 PrefabInstance:
   m_ObjectHideFlags: 0

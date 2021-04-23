@@ -11,7 +11,8 @@ public class AnimatorHandler : MonoBehaviour
 {
 
     public Animator anim;
-    
+    public InputHandler inputHandler;
+    public PlayerController playerController;
         
 
 
@@ -26,11 +27,11 @@ public class AnimatorHandler : MonoBehaviour
 
     {
 
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
+        inputHandler = GetComponentInParent<InputHandler>();
+        playerController = GetComponentInParent<PlayerController>();
 
     }
-
-
 
     public void UpdateAnimatorValues(float vMov, float hMov)
 
@@ -42,8 +43,6 @@ public class AnimatorHandler : MonoBehaviour
 
     }
 
-
-
     public void StopRotation()
 
     {
@@ -51,8 +50,6 @@ public class AnimatorHandler : MonoBehaviour
         canRotate = false;
 
     }
-
-
 
     public void StartRotation()
 
@@ -62,7 +59,21 @@ public class AnimatorHandler : MonoBehaviour
 
     }
 
+    private void OnAnimatorMove()
+    {
+        if (anim.GetBool("movement"))
+        {
+            return;
+        }
 
+        float delta = Time.deltaTime;
+
+        Vector3 deltaPos = anim.deltaPosition;
+        deltaPos.y = 0;
+
+        Vector3 dir = deltaPos / delta;
+        playerController.controller.SimpleMove(dir);
+    }
 
     public void UpdateJump(bool jumping)
 
@@ -91,7 +102,6 @@ public class AnimatorHandler : MonoBehaviour
 
     public void UpdateDodge(bool dodging) {
         anim.SetBool("Dodge", dodging);
-        
         
         
 

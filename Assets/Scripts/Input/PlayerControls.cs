@@ -43,14 +43,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Sprint"",
-                    ""type"": ""Button"",
-                    ""id"": ""39eeade6-7125-4478-9fd7-372515eb1518"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""RAttack"",
                     ""type"": ""Button"",
                     ""id"": ""2ce896ee-2286-4bde-b841-cb894f645c03"",
@@ -155,17 +147,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f80c19bb-7b6b-4834-a21f-c0ec1b5d9056"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sprint"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""32690b2e-6b97-45d4-81b7-072ea9b3ec3f"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": ""Press"",
@@ -207,7 +188,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Locomotion_Move = m_Locomotion.FindAction("Move", throwIfNotFound: true);
         m_Locomotion_Look = m_Locomotion.FindAction("Look", throwIfNotFound: true);
         m_Locomotion_Jump = m_Locomotion.FindAction("Jump", throwIfNotFound: true);
-        m_Locomotion_Sprint = m_Locomotion.FindAction("Sprint", throwIfNotFound: true);
         m_Locomotion_RAttack = m_Locomotion.FindAction("RAttack", throwIfNotFound: true);
         m_Locomotion_LAttack = m_Locomotion.FindAction("LAttack", throwIfNotFound: true);
         m_Locomotion_Dodge = m_Locomotion.FindAction("Dodge", throwIfNotFound: true);
@@ -263,7 +243,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Locomotion_Move;
     private readonly InputAction m_Locomotion_Look;
     private readonly InputAction m_Locomotion_Jump;
-    private readonly InputAction m_Locomotion_Sprint;
     private readonly InputAction m_Locomotion_RAttack;
     private readonly InputAction m_Locomotion_LAttack;
     private readonly InputAction m_Locomotion_Dodge;
@@ -274,7 +253,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Locomotion_Move;
         public InputAction @Look => m_Wrapper.m_Locomotion_Look;
         public InputAction @Jump => m_Wrapper.m_Locomotion_Jump;
-        public InputAction @Sprint => m_Wrapper.m_Locomotion_Sprint;
         public InputAction @RAttack => m_Wrapper.m_Locomotion_RAttack;
         public InputAction @LAttack => m_Wrapper.m_Locomotion_LAttack;
         public InputAction @Dodge => m_Wrapper.m_Locomotion_Dodge;
@@ -296,9 +274,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnJump;
-                @Sprint.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnSprint;
-                @Sprint.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnSprint;
-                @Sprint.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnSprint;
                 @RAttack.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnRAttack;
                 @RAttack.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnRAttack;
                 @RAttack.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnRAttack;
@@ -321,9 +296,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Sprint.started += instance.OnSprint;
-                @Sprint.performed += instance.OnSprint;
-                @Sprint.canceled += instance.OnSprint;
                 @RAttack.started += instance.OnRAttack;
                 @RAttack.performed += instance.OnRAttack;
                 @RAttack.canceled += instance.OnRAttack;
@@ -342,7 +314,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
         void OnRAttack(InputAction.CallbackContext context);
         void OnLAttack(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);

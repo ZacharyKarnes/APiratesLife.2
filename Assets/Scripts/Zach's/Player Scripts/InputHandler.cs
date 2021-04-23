@@ -22,13 +22,10 @@ public class InputHandler : MonoBehaviour
 
     public Vector2 look;
 
-
-
-
-
+   
+    
+    //action key press
     public bool jumpDown = false;
-
-    public bool sprintOn = false;
 
     public bool rAttackOn = false;
 
@@ -117,11 +114,8 @@ public class InputHandler : MonoBehaviour
 
 
 
-        //sprint
-
-        controls.Locomotion.Sprint.performed += controls => sprintOn = true;
-
-        controls.Locomotion.Sprint.canceled += controls => sprintOn = false;
+   
+      
 
 
 

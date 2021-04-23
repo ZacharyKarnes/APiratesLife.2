@@ -15,16 +15,9 @@ public class PlayerController : MonoBehaviour
 
     private InputHandler input;
 
-    private CharacterController controller;
+    public CharacterController controller;
 
     private AnimatorHandler animatorHandler;
-
-   
-
-
-
-
-
 
     public Transform camParent;
 
@@ -73,12 +66,9 @@ public class PlayerController : MonoBehaviour
 
         controller = GetComponent<CharacterController>();
 
-        animatorHandler = GetComponent<AnimatorHandler>();
+        animatorHandler = GetComponentInChildren<AnimatorHandler>();
 
         animatorHandler.Initialize();
-
-        
-
     }
 
 
@@ -86,17 +76,19 @@ public class PlayerController : MonoBehaviour
     void Update()
 
     {
-
-        HandleMovement(Time.deltaTime);
-
-        HandleRotation(Time.deltaTime);
-
+        if (animatorHandler.anim.GetBool("movement"))
+        {
+            HandleMovement(Time.deltaTime);
+            HandleRotation(Time.deltaTime);
+            HandleJump();
+            
+            
+        }
+        HandleDodge();
+        HandleAttack();
         HandleGravity(Time.deltaTime);
 
-        HandleJump();
 
-        HandleAttack();
-        HandleDodge();
 
 
 
@@ -112,16 +104,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 movement = (input.move.x * camParent.right) + (input.move.y * camParent.forward);
 
-        if (!animatorHandler.anim.GetBool("movement"))
-        {
-            controller.Move(movement * 0f * delta);
-        }
-        else if(animatorHandler.anim.GetBool("movement"))
-        {
-            controller.Move(movement * speed * delta);
-        }
-        
-
+     
+       controller.Move(movement * speed * delta);
+       
     }
 
     private void HandleRotation(float delta)
@@ -237,10 +222,12 @@ public class PlayerController : MonoBehaviour
         if (input.lAttackOn)
         {
             HandleLeftAttack();
-        } else
+        }
+        else
         {
             animatorHandler.UpdateLAttack(false);
         }
+       
 
     }
 
@@ -264,6 +251,7 @@ public class PlayerController : MonoBehaviour
         if (input.dodgeOn)
         {
             animatorHandler.UpdateDodge(true);
+
             
         }
         else if (!input.dodgeOn) {
