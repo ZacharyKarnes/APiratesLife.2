@@ -1311,21 +1311,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1974667973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3b921599f99f845bc9142d62301321, type: 3}
+  m_Script: {fileID: 11500000, guid: fe0d93c500573d847a30da927fd00c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1974667975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974667973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1af0e63351900e4aa0232bfe9c024cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1 &2054229750
 GameObject:
   m_ObjectHideFlags: 0

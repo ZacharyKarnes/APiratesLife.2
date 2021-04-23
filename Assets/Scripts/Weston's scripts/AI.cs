@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class AI : MonoBehaviour
 {
+    private AIAnimator animator;
     public enum AIState { PATROL, ATTACKING, FOLLOW};
 
     public AIState state = AIState.PATROL;
@@ -30,10 +31,10 @@ public class AI : MonoBehaviour
     //States
     public float sightRange, attackRange;
 
-
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+       animator = GetComponent<AIAnimator>();
     }
 
 
@@ -85,7 +86,7 @@ public class AI : MonoBehaviour
     {
         agent.SetDestination(player.position);
 
-
+        
         //state switch
         if(Physics.CheckSphere(transform.position, attackRange, whatIsPlayer))
         {
@@ -93,6 +94,10 @@ public class AI : MonoBehaviour
         }
         else if (!Physics.CheckSphere(transform.position, sightRange, whatIsPlayer)){
             state = AIState.PATROL;
+            animator.UpdateChasePlayer(true);
+                      
+
+
         }
     }
 
