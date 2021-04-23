@@ -61,12 +61,20 @@ crashlytics-build.properties
 # Custom Ignores
 
 Assets/Graphics/
+<<<<<<< HEAD
 Assets/Animation/
 <<<<<<< HEAD
 Assets/Audio/
 =======
 Assets/Audio/ 
 >>>>>>> ethan
+=======
+<<<<<<< HEAD
+Assets/Audio/ 
+=======
+Assets/Audio/
+>>>>>>> Wes
+>>>>>>> ZacharySKarnes
 
 
 
