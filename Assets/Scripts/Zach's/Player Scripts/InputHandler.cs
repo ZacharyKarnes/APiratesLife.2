@@ -33,6 +33,11 @@ public class InputHandler : MonoBehaviour
 
     public bool dodgeOn = false;
 
+    public bool sheathOn = false;
+    
+    //emote key presses
+    public bool twerkOn = false;
+
 
     public float moveAmount { get; private set; }
 
@@ -132,6 +137,14 @@ public class InputHandler : MonoBehaviour
         //Dodge
         controls.Locomotion.Dodge.performed += controls => dodgeOn = true;
         controls.Locomotion.Dodge.canceled += controls => dodgeOn = false;
+
+        //sheath
+        controls.Locomotion.Sheath.performed += controls => sheathOn = true;
+        controls.Locomotion.Sheath.canceled += controls => sheathOn = false;
+        
+        //emote
+        controls.Emotes.Twerk.performed += controls => twerkOn = true;
+        controls.Emotes.Twerk.canceled += controls => twerkOn = false;
 
 
 

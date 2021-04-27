@@ -52,6 +52,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Sheath",
+                    "type": "Button",
+                    "id": "8cb1385d-2c9b-4e4b-823b-f4dc3b5eb73c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -162,6 +170,44 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b86dd60-0418-4a18-8961-db0bb6fa61cd",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sheath",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Emotes",
+            "id": "9f668cb2-c058-4750-bf57-58f758995082",
+            "actions": [
+                {
+                    "name": "Twerk",
+                    "type": "Button",
+                    "id": "7b68f42d-13b3-4654-972d-a47f7cc70b50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ca5020d7-209e-414f-99dc-473e2e948160",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Twerk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

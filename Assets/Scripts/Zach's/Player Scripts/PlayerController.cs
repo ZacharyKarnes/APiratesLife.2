@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviour
         HandleDodge();
         HandleAttack();
         HandleGravity(Time.deltaTime);
+        HandleTwerk();
+        HandleSheath();
 
 
 
@@ -247,6 +249,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void HandleSheath() {
+        if (input.sheathOn)
+        {
+            animatorHandler.UpdateSheath(true);
+        }
+        else if (!input.sheathOn) {
+            animatorHandler.UpdateSheath(false);
+        }
+    }
+
     private void HandleDodge() {
         if (input.dodgeOn)
         {
@@ -260,7 +272,15 @@ public class PlayerController : MonoBehaviour
             
         }
     }
-
+    private void HandleTwerk() {
+        if (input.twerkOn)
+        {
+            animatorHandler.UpdateTwerk(true);
+        }
+        else if (!input.twerkOn) {
+            animatorHandler.UpdateTwerk(false);
+        }
+    }
     private void HandleDeath() {
       
    }

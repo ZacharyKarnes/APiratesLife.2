@@ -99,6 +99,15 @@ public class AnimatorHandler : MonoBehaviour
        
     }
 
+    public void UpdateSheath(bool sheathing) {
+        anim.SetBool("sheathSword", sheathing);
+    }
+
+    public void UpdateTwerk(bool twerking) {
+        anim.SetBool("twerk", twerking);
+    }
+
+
 
     public void UpdateDodge(bool dodging) {
         anim.SetBool("Dodge", dodging);

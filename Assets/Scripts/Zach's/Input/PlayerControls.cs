@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Zach's/Input/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -62,6 +62,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Dodge"",
                     ""type"": ""Button"",
                     ""id"": ""a4019caa-4e84-458a-a1dc-3c4028df46ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sheath"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cb1385d-2c9b-4e4b-823b-f4dc3b5eb73c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -177,6 +185,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b86dd60-0418-4a18-8961-db0bb6fa61cd"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sheath"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Emotes"",
+            ""id"": ""9f668cb2-c058-4750-bf57-58f758995082"",
+            ""actions"": [
+                {
+                    ""name"": ""Twerk"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b68f42d-13b3-4654-972d-a47f7cc70b50"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ca5020d7-209e-414f-99dc-473e2e948160"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Twerk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -191,6 +237,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Locomotion_RAttack = m_Locomotion.FindAction("RAttack", throwIfNotFound: true);
         m_Locomotion_LAttack = m_Locomotion.FindAction("LAttack", throwIfNotFound: true);
         m_Locomotion_Dodge = m_Locomotion.FindAction("Dodge", throwIfNotFound: true);
+        m_Locomotion_Sheath = m_Locomotion.FindAction("Sheath", throwIfNotFound: true);
+        // Emotes
+        m_Emotes = asset.FindActionMap("Emotes", throwIfNotFound: true);
+        m_Emotes_Twerk = m_Emotes.FindAction("Twerk", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -246,6 +296,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Locomotion_RAttack;
     private readonly InputAction m_Locomotion_LAttack;
     private readonly InputAction m_Locomotion_Dodge;
+    private readonly InputAction m_Locomotion_Sheath;
     public struct LocomotionActions
     {
         private @PlayerControls m_Wrapper;
@@ -256,6 +307,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @RAttack => m_Wrapper.m_Locomotion_RAttack;
         public InputAction @LAttack => m_Wrapper.m_Locomotion_LAttack;
         public InputAction @Dodge => m_Wrapper.m_Locomotion_Dodge;
+        public InputAction @Sheath => m_Wrapper.m_Locomotion_Sheath;
         public InputActionMap Get() { return m_Wrapper.m_Locomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,6 +335,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dodge.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnDodge;
                 @Dodge.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnDodge;
                 @Dodge.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnDodge;
+                @Sheath.started -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnSheath;
+                @Sheath.performed -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnSheath;
+                @Sheath.canceled -= m_Wrapper.m_LocomotionActionsCallbackInterface.OnSheath;
             }
             m_Wrapper.m_LocomotionActionsCallbackInterface = instance;
             if (instance != null)
@@ -305,10 +360,46 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Dodge.started += instance.OnDodge;
                 @Dodge.performed += instance.OnDodge;
                 @Dodge.canceled += instance.OnDodge;
+                @Sheath.started += instance.OnSheath;
+                @Sheath.performed += instance.OnSheath;
+                @Sheath.canceled += instance.OnSheath;
             }
         }
     }
     public LocomotionActions @Locomotion => new LocomotionActions(this);
+
+    // Emotes
+    private readonly InputActionMap m_Emotes;
+    private IEmotesActions m_EmotesActionsCallbackInterface;
+    private readonly InputAction m_Emotes_Twerk;
+    public struct EmotesActions
+    {
+        private @PlayerControls m_Wrapper;
+        public EmotesActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Twerk => m_Wrapper.m_Emotes_Twerk;
+        public InputActionMap Get() { return m_Wrapper.m_Emotes; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EmotesActions set) { return set.Get(); }
+        public void SetCallbacks(IEmotesActions instance)
+        {
+            if (m_Wrapper.m_EmotesActionsCallbackInterface != null)
+            {
+                @Twerk.started -= m_Wrapper.m_EmotesActionsCallbackInterface.OnTwerk;
+                @Twerk.performed -= m_Wrapper.m_EmotesActionsCallbackInterface.OnTwerk;
+                @Twerk.canceled -= m_Wrapper.m_EmotesActionsCallbackInterface.OnTwerk;
+            }
+            m_Wrapper.m_EmotesActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Twerk.started += instance.OnTwerk;
+                @Twerk.performed += instance.OnTwerk;
+                @Twerk.canceled += instance.OnTwerk;
+            }
+        }
+    }
+    public EmotesActions @Emotes => new EmotesActions(this);
     public interface ILocomotionActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -317,5 +408,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnRAttack(InputAction.CallbackContext context);
         void OnLAttack(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnSheath(InputAction.CallbackContext context);
+    }
+    public interface IEmotesActions
+    {
+        void OnTwerk(InputAction.CallbackContext context);
     }
 }
