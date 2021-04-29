@@ -17,6 +17,25 @@ public class AIAnimator : MonoBehaviour
         
     }
     public void UpdateChasePlayer(bool chasing) {
-        anim.SetBool("following", true);
+        anim.SetBool("following", chasing);
+     
+        anim.SetBool("attacking", false);
+        anim.SetBool("patrol", false);
+       
+    }
+
+
+    public void UpdateAttack(bool attacking) {
+        anim.SetBool("attacking", attacking);
+        anim.SetBool("following", false);
+
+    }
+
+    public void UpdatePatrol(bool patrol)
+    {
+        anim.SetBool("patrol", patrol);
+        
+        anim.SetBool("following", false);
+        anim.SetBool("attacking", false);
     }
 }

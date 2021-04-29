@@ -34,7 +34,7 @@ public class AI : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-       animator = GetComponent<AIAnimator>();
+       animator = GetComponentInChildren<AIAnimator>();
     }
 
 
@@ -45,10 +45,13 @@ public class AI : MonoBehaviour
         {
             case AIState.PATROL:
                 Patrol();
+                
                 break;
 
             case AIState.FOLLOW:
+               
                 ChasePlayer();
+               
                 break;
 
             case AIState.ATTACKING:
@@ -61,6 +64,7 @@ public class AI : MonoBehaviour
     #region States
     private void Patrol()
     {
+        animator.UpdatePatrol(true);
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -84,6 +88,8 @@ public class AI : MonoBehaviour
 
     private void ChasePlayer()
     {
+       
+        animator.UpdateChasePlayer(true);
         agent.SetDestination(player.position);
 
         
@@ -94,7 +100,7 @@ public class AI : MonoBehaviour
         }
         else if (!Physics.CheckSphere(transform.position, sightRange, whatIsPlayer)){
             state = AIState.PATROL;
-            animator.UpdateChasePlayer(true);
+           
                       
 
 
@@ -103,6 +109,7 @@ public class AI : MonoBehaviour
 
     private void AttackPlayer()
     {
+        animator.UpdateAttack(true);
         //make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
@@ -120,7 +127,7 @@ public class AI : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-
+        
         if (!Physics.CheckSphere(transform.position, attackRange, whatIsPlayer))
         {
             state = AIState.FOLLOW;
