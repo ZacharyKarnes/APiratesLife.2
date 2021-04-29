@@ -282,6 +282,8 @@ MonoBehaviour:
   rAttackOn: 0
   lAttackOn: 0
   dodgeOn: 0
+  sheathOn: 0
+  twerkOn: 0
 --- !u!1001 &494516466
 PrefabInstance:
   m_ObjectHideFlags: 0
