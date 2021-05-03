@@ -113,7 +113,7 @@ public class AI : MonoBehaviour
         //make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+       
 
         if (!alreadyAttacked)
         {

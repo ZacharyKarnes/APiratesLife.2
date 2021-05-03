@@ -654,7 +654,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1465470020}
+      objectReference: {fileID: 988392644}
     - target: {fileID: 5446422135233966206, guid: e0905d78b80e7c543aee7bbcec3d3ef1,
         type: 3}
       propertyPath: m_Height

@@ -18,9 +18,9 @@ public class AIAnimator : MonoBehaviour
     }
     public void UpdateChasePlayer(bool chasing) {
         anim.SetBool("following", chasing);
-     
         anim.SetBool("attacking", false);
         anim.SetBool("patrol", false);
+      
        
     }
 
@@ -28,6 +28,8 @@ public class AIAnimator : MonoBehaviour
     public void UpdateAttack(bool attacking) {
         anim.SetBool("attacking", attacking);
         anim.SetBool("following", false);
+        anim.SetBool("patrol", false);
+
 
     }
 
