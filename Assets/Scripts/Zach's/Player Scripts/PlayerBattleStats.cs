@@ -27,6 +27,14 @@ public class PlayerBattleStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void UpdateDamageOutput() {
+
+    }
+
+    void UpdateDamageInput() {
 
     }
 }
